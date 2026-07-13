@@ -1,0 +1,27 @@
+.navbar{
+
+    position:fixed;
+
+    width:100%;
+
+    transition:.3s;
+
+    z-index:9999;
+
+}
+
+.navbar.scrolled{
+
+    background:white;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+.navbar.scrolled .nav-link,
+
+.navbar.scrolled .navbar-brand{
+
+    color:#111!important;
+
+}

@@ -1,0 +1,45 @@
+<section class="hero-section">
+
+    {% for hero in hero_banners %}
+
+    <div class="hero-slide">
+
+        <img src="{{ hero.desktop_image.url }}" class="hero-bg" alt="{{ hero.title }}">
+
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <h5>{{ hero.subtitle }}</h5>
+
+                <h1>{{ hero.title }}</h1>
+
+                <p>{{ hero.description }}</p>
+
+                <div class="hero-buttons">
+
+                    {% if hero.button_one_text %}
+                    <a href="{{ hero.button_one_url }}" class="btn btn-warning btn-lg">
+                        {{ hero.button_one_text }}
+                    </a>
+                    {% endif %}
+
+                    {% if hero.button_two_text %}
+                    <a href="{{ hero.button_two_url }}" class="btn btn-outline-light btn-lg">
+                        {{ hero.button_two_text }}
+                    </a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</section>
