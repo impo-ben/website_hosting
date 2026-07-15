@@ -163,9 +163,3 @@ STORAGES = {
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
-print("=" * 50)
-print("STATIC_ROOT =", STATIC_ROOT)
-print("STATICFILES_DIRS =", STATICFILES_DIRS)
-print("STATIC_URL =", STATIC_URL)
-print("=" * 50)
