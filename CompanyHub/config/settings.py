@@ -144,6 +144,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+# --------------------------------------------------
+# Static Files
+# --------------------------------------------------
+
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
@@ -152,8 +156,45 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-#STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+# --------------------------------------------------
+# Media Files (Cloudinary)
+# --------------------------------------------------
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+# --------------------------------------------------
+# Storage Backends (Django 5.x)
+# --------------------------------------------------
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+# STATIC_URL = "/static/"
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
+
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+# #STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
+# # STORAGES = {
+# #     "default": {
+# #         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+# #     },
+# #     "staticfiles": {
+# #         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+# #     },
+# # }
 
 # STORAGES = {
 #     "default": {
@@ -163,14 +204,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 #         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
 #     },
 # }
-
-STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-    },
-}
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = BASE_DIR / "media"
