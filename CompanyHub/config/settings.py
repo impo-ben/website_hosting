@@ -20,12 +20,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-30d^46gjjkfavohh_i3alitdm3ji6e=o&^4qcnm#=drd&d(k*a'
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+import os
+
+ALLOWED_HOSTS = [
+    ".vercel.app",
+    "localhost",
+    "127.0.0.1",
+]
+
+if os.getenv("VERCEL_URL"):
+    ALLOWED_HOSTS.append(os.getenv("VERCEL_URL"))
 
 
 # Application definition
@@ -84,8 +93,8 @@ import os
 import dj_database_url
 
 DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ["DATABASE_URL"],
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),
         conn_max_age=600,
         ssl_require=True,
     )
