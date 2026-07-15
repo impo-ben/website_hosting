@@ -23,9 +23,15 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     path("", include("core.urls")),
+    path("", include("company.urls")),
+    path("", include("services.urls")),
+    path("shop/", include("shop.urls")),
+    #path("services/",include("services.urls"),),
+    
 
     path("accounts/", include("django.contrib.auth.urls")),
     path("portfolio/",include("portfolio.urls"),),
+    #path("company/", include("company.urls")),
 ]
 
 if settings.DEBUG:

@@ -2,6 +2,8 @@
     position:relative;
     height:100vh;
     overflow:hidden;
+    padding-top: 0px;
+    background: black;
 }
 
 .hero-slide{
@@ -11,6 +13,8 @@
 }
 
 .hero-bg{
+    position:absolute;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;

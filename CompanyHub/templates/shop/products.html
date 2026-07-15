@@ -1,0 +1,89 @@
+<section id="products" class="products-section">
+
+    <div class="container">
+
+        <div class="section-title text-center">
+
+            <span>OUR PRODUCTS</span>
+
+            <h2>Featured Electronics & Robotics</h2>
+
+            <p style="font-size: large;">
+                Explore our best-selling embedded systems,
+                robotics kits and industrial automation products.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for product in featured_products %}
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <img src="{{ product.image.url }}"
+                             alt="{{ product.name }}">
+
+                    </div>
+
+                    <div class="product-body">
+
+                        <span class="category">
+
+                            {{ product.category.name }}
+
+                        </span>
+
+                        <h4>
+
+                            {{ product.name }}
+
+                        </h4>
+
+                        <div class="rating">
+
+                            ★★★★★
+
+                        </div>
+
+                        <div class="price">
+
+                            ₹{{ product.price }}
+
+                        </div>
+
+                        <a href="/shop/{{ product.slug }}/"
+                           class="btn btn-primary w-100">
+
+                            View Details
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a href="/shop/"
+               class="btn btn-outline-primary btn-lg">
+
+                View Complete Store
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

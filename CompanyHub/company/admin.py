@@ -4,13 +4,14 @@ from .models import (
     HeroBanner,
     AboutCompany,
     WhyChooseUs,
-    Service,
     Achievement,
     Partner,
     Testimonial,
     ContactInfo,
     SocialLink,
     SEOSetting,
+    ContactMessage,
+
 )
 
 class SingletonAdmin(admin.ModelAdmin):
@@ -76,31 +77,62 @@ class WhyChooseUsAdmin(admin.ModelAdmin):
         "title",
     )
     
-@admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
+# @admin.register(Service)
+# class ServiceAdmin(admin.ModelAdmin):
 
-    list_display = (
-        "title",
-        "display_order",
-        "is_active",
-    )
+#     list_display = (
+#         "title",
+#         "display_order",
+#         "is_active",
+#     )
 
-    list_editable = (
-        "display_order",
-        "is_active",
-    )
+#     list_editable = (
+#         "display_order",
+#         "is_active",
+#     )
 
-    prepopulated_fields = {
-        "slug": ("title",)
-    }
+#     prepopulated_fields = {
+#         "slug": ("title",)
+#     }
 
-    search_fields = (
-        "title",
-    )
+#     search_fields = (
+#         "title",
+#     )
 
-    ordering = (
-        "display_order",
-    )
+#     ordering = (
+#         "display_order",
+#     )
+
+# @admin.register(ServiceInquiry)
+# class ServiceInquiryAdmin(admin.ModelAdmin):
+
+#     list_display = (
+#         "full_name",
+#         "service",
+#         "phone",
+#         "email",
+#         "status",
+#         "created_at",
+#     )
+
+#     list_filter = (
+#         "status",
+#         "service",
+#     )
+
+#     search_fields = (
+#         "full_name",
+#         "email",
+#         "phone",
+#     )
+
+#     list_editable = (
+#         "status",
+#     )
+
+#     ordering = (
+#         "-created_at",
+#     )
     
 @admin.register(Achievement)
 class AchievementAdmin(admin.ModelAdmin):
@@ -180,7 +212,39 @@ class ContactInfoAdmin(SingletonAdmin):
         "phone",
         "email",
     )
-    
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "full_name",
+        "email",
+        "phone",
+        "subject",
+        "status",
+        "created_at",
+    )
+
+    list_filter = (
+        "status",
+        "created_at",
+    )
+
+    search_fields = (
+        "full_name",
+        "email",
+        "phone",
+    )
+
+    list_editable = (
+        "status",
+    )
+
+    readonly_fields = (
+        "created_at",
+        "updated_at",
+    )
+
 @admin.register(SocialLink)
 class SocialLinkAdmin(admin.ModelAdmin):
 

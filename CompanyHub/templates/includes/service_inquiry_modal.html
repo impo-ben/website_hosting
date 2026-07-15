@@ -1,0 +1,142 @@
+<div class="modal fade"
+     id="serviceInquiryModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content inquiry-modal">
+
+            <div class="modal-header border-0">
+
+                <div>
+
+                    <h3 class="fw-bold">
+                        Service Enquiry
+                    </h3>
+
+                    <p class="text-light mb-0">
+                        Fill the form and we'll contact you soon.
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form
+                    method="POST"
+                    action="{% url 'service_inquiry' %}">
+
+                    {% csrf_token %}
+
+                    <input
+                        type="hidden"
+                        name="service"
+                        id="selectedService">
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Interested In
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="selectedServiceName"
+                            class="form-control"
+                            readonly>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label>
+
+                                Full Name
+
+                            </label>
+
+                            {{ inquiry_form.full_name }}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label>
+
+                                Phone
+
+                            </label>
+
+                            {{ inquiry_form.phone }}
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>
+
+                            Email
+
+                        </label>
+
+                        {{ inquiry_form.email }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>
+
+                            Company
+
+                        </label>
+
+                        {{ inquiry_form.company }}
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label>
+
+                            Message
+
+                        </label>
+
+                        {{ inquiry_form.message }}
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100 py-3">
+
+                        <i class="bi bi-send-fill"></i>
+
+                        Submit Enquiry
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

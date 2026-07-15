@@ -1,68 +1,57 @@
-<section class="services-section py-5">
-
+<section id="services" class="services-section">
     <div class="container">
+        <div class="section-title text-center">
+            <span>OUR SERVICES</span>
+            <h2>Engineering Solutions That Drive Innovation</h2>
+            <p style="font-size: large;">
+                We deliver cutting-edge robotics, automation,
+                IoT and embedded solutions for industries,
+                educational institutions and research labs.
+            </p>
+        </div>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6">
+    <div class="service-card">
 
-        <div class="text-center mb-5">
-
-            <h6 class="text-primary">
-                OUR SERVICES
-            </h6>
-
-            <h2>
-                Innovative Solutions For Modern Industries
-            </h2>
-
+        <div class="service-image">
+            <img src="{{ service.image.url }}" alt="{{ service.title }}">
         </div>
 
-        <div class="row g-4">
+        <div class="service-content">
 
-            {% for service in services %}
-
-            <div class="col-lg-4 col-md-6">
-
-                <div class="service-card">
-
-                    {% if service.image %}
-                    <div class="service-image">
-
-                        <img src="{{ service.image.url }}"
-                             alt="{{ service.title }}">
-
-                    </div>
-                    {% endif %}
-
-                    <div class="service-content">
-
-                        {% if service.icon %}
-                        <div class="service-icon">
-
-                            <i class="{{ service.icon }}"></i>
-
-                        </div>
-                        {% endif %}
-
-                        <h4>{{ service.title }}</h4>
-
-                        <p>{{ service.short_description }}</p>
-
-                    </div>
-
-                </div>
-
+            <div class="service-icon">
+                <i class="{{ service.icon }}"></i>
             </div>
 
-            {% empty %}
+            <h4>{{ service.title }}</h4>
 
-            <div class="col-12 text-center">
+            <p>{{ service.short_description }}</p>
 
-                <h4>No Services Added Yet</h4>
+            <div class="service-buttons">
+                <a href="/services/{{ service.slug }}/"
+                   class="btn btn-primary">
+                    Learn More
+                </a>
 
+                <button
+                    type="button"
+                    class="btn btn-primary enquiry-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#serviceInquiryModal"
+                    data-service-id="{{ service.id }}"
+                    data-service-name="{{ service.title }}">
+                    <i class="bi bi-chat-dots-fill"></i>
+                    Enquire Now
+                </button>
             </div>
-
-            {% endfor %}
 
         </div>
 
     </div>
-
+</div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
+{% include "includes/service_inquiry_modal.html" %}
