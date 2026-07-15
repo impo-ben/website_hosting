@@ -8,3 +8,6 @@
 /CompanyHub(2).zip
 *.zip*
 staticfiles/
+__pycache__/
+*.pyc
+.env
