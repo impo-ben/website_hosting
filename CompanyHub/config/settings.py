@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-development-only")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = [
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'cloudinary',
-    # 'cloudinary_storage',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'config',
     'core',
@@ -144,10 +144,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-# --------------------------------------------------
-# Static Files
-# --------------------------------------------------
-
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
@@ -156,53 +152,13 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# --------------------------------------------------
-# Media Files (Cloudinary)
-# --------------------------------------------------
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-# --------------------------------------------------
-# Storage Backends (Django 5.x)
-# --------------------------------------------------
-
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-
-# STATIC_URL = "/static/"
-
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
-
-# STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-# #STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
-
-# # STORAGES = {
-# #     "default": {
-# #         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-# #     },
-# #     "staticfiles": {
-# #         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-# #     },
-# # }
-
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-#     },
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-#     },
-# }
-# MEDIA_URL = "/media/"
-# MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
