@@ -7,3 +7,6 @@
 /env
 /CompanyHub(2).zip
 *.zip*
+__pycache__/
+*.pyc
+.env
