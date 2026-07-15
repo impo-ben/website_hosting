@@ -1,0 +1,90 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h6 class="text-primary">
+            OUR PORTFOLIO
+        </h6>
+
+        <h2>
+            Our Recent Projects
+        </h2>
+
+    </div>
+
+    <div class="row">
+
+        {% for project in projects %}
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="card shadow-sm h-100">
+
+                <img
+                    src="{{ project.featured_image.url }}"
+                    class="card-img-top"
+                    style="height:260px;object-fit:cover;"
+                >
+
+                <div class="card-body">
+
+                    <small class="text-primary">
+
+                        {{ project.category.name }}
+
+                    </small>
+
+                    <h4>
+
+                        {{ project.title }}
+
+                    </h4>
+
+                    <p>
+
+                        {{ project.short_description }}
+
+                    </p>
+
+                    <a
+                        href="{% url 'project_detail' project.slug %}"
+                        class="btn btn-primary"
+                    >
+                        View Project
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <section class="container py-5">
+
+    <div class="text-center">
+
+        <a
+            href="{% url 'home' %}"
+            class="btn btn-primary btn-lg rounded-pill px-5"
+        >
+            <i class="bi bi-house-fill me-2"></i>
+
+            Go to Home
+        </a>
+
+    </div>
+
+</section>
+
+</section>
+
+{% endblock %}

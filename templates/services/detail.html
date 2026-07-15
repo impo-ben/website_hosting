@@ -1,0 +1,214 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}
+{{ service.title }}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+      href="{% static 'css/service-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="service-banner">
+
+    <img src="{{ service.image.url }}"
+         alt="{{ service.title }}">
+
+    <div class="overlay">
+
+        <div class="container">
+
+            <a href="/#services" class="back-btn">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back to Home
+
+            </a>
+
+            <span class="service-tag">
+
+                OUR SERVICE
+
+            </span>
+
+            <h1>
+
+                {{ service.title }}
+
+            </h1>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="service-content-section">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9">
+
+                <p class="service-description">
+
+                    {{ service.full_description }}
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button
+
+                        class="btn btn-primary enquiry-btn"
+
+                        data-bs-toggle="modal"
+
+                        data-bs-target="#serviceInquiryModal"
+
+                        data-service-id="{{ service.id }}"
+
+                        data-service-name="{{ service.title }}">
+
+                        <i class="bi bi-chat-dots-fill"></i>
+
+                        Enquire Now
+
+                    </button>
+
+                    <a href="tel:{{ contact.phone }}"
+
+                       class="btn btn-outline-primary">
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                        Call Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="service-features">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="bi bi-cpu"></i>
+
+                    <h5>Embedded Systems</h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="bi bi-robot"></i>
+
+                    <h5>Automation</h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="bi bi-tools"></i>
+
+                    <h5>Installation</h5>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="bi bi-headset"></i>
+
+                    <h5>Support</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="related-services">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+
+            Related Services
+
+        </h2>
+
+        <div class="row g-4">
+
+            {% for item in related_services %}
+
+            <div class="col-lg-4">
+
+                <div class="related-card">
+
+                    <img src="{{ item.image.url }}">
+
+                    <div class="p-4">
+
+                        <h4>
+
+                            {{ item.title }}
+
+                        </h4>
+
+                        <a href="{% url 'service_detail' item.slug %}">
+
+                            Learn More →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% include "includes/service_inquiry_modal.html" %}
+
+{% endblock %}

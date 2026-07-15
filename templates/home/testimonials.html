@@ -1,0 +1,120 @@
+<section id="testimonials" class="testimonial-section">
+
+    <div class="container">
+
+        <div class="section-title text-center">
+
+            <span>TESTIMONIALS</span>
+
+            <h2>Trusted By Our Clients</h2>
+
+            <p style="font-size: large;">
+                Our commitment to innovation and quality has earned the
+                trust of businesses, institutions and engineering teams.
+            </p>
+
+        </div>
+
+        {% if testimonials %}
+
+        <div id="testimonialCarousel"
+             class="carousel slide"
+             data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                {% for testimonial in testimonials %}
+
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+
+                    <div class="testimonial-card mx-auto">
+
+                        <i class="bi bi-quote quote-icon"></i>
+
+                        <img src="{{ testimonial.photo.url }}"
+                             class="client-photo"
+                             alt="{{ testimonial.client_name }}">
+
+                        <p class="review">
+
+                            {{ testimonial.review }}
+
+                        </p>
+
+                        <div class="rating">
+
+                            {% for i in "12345" %}
+
+                                {% if forloop.counter <= testimonial.rating %}
+
+                                    <i class="bi bi-star-fill"></i>
+
+                                {% else %}
+
+                                    <i class="bi bi-star"></i>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+
+                        <h4>
+
+                            {{ testimonial.client_name }}
+
+                        </h4>
+
+                        <small>
+
+                            {{ testimonial.designation }}
+
+                            {% if testimonial.company %}
+                            • {{ testimonial.company }}
+                            {% endif %}
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev">
+
+                <span class="carousel-control-prev-icon"></span>
+
+            </button>
+
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="next">
+
+                <span class="carousel-control-next-icon"></span>
+
+            </button>
+
+        </div>
+
+        {% else %}
+
+        <div class="text-center">
+
+            <h4>No Testimonials Available</h4>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

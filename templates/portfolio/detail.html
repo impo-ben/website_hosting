@@ -1,0 +1,220 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/project-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5 fade-up">
+
+    <div class="project-hero">
+
+        <img src="{{ project.featured_image.url }}">
+
+        <div class="project-overlay"></div>
+
+        <div class="project-title">
+
+            <span class="badge bg-primary mb-3">
+                {{ project.category.name }}
+            </span>
+
+            <h1>{{ project.title }}</h1>
+
+            <p>{{ project.short_description }}</p>
+
+        </div>
+
+    </div>
+    <!--<div class="container mb-4">
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">
+
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+
+            </li>
+
+            <li class="breadcrumb-item">
+
+                <a href="{% url 'portfolio' %}">
+                    Portfolio
+                </a>
+
+            </li>
+
+            <li
+                class="breadcrumb-item active"
+                aria-current="page"
+            >
+                {{ project.title }}
+            </li>
+
+        </ol>
+
+    </nav>
+
+</div>-->
+
+</section>
+
+<section class="container pb-5">
+
+    <div class="row g-5">
+
+        <div class="col-lg-8">
+
+            <h2 class="section-title">
+                Project Overview
+            </h2>
+
+            <p class="lead">
+
+                {{ project.full_description }}
+
+            </p>
+
+            <hr class="my-5">
+
+            <h2 class="section-title">
+                Technologies Used
+            </h2>
+
+            <div class="tech-stack">
+
+                {% for tech in project.technologies.all %}
+
+                <div class="tech-badge">
+
+                    <i class="{{ tech.icon }}"></i>
+
+                    {{ tech.name }}
+
+                </div>
+
+                {% empty %}
+
+                No technologies added.
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="info-card">
+
+                <h4 class="mb-4">
+                    Project Details
+                </h4>
+
+                <ul>
+
+                    <li>
+
+                        <strong>Client</strong>
+
+                        <span>{{ project.client }}</span>
+
+                    </li>
+
+                    <li>
+
+                        <strong>Date</strong>
+
+                        <span>{{ project.project_date }}</span>
+
+                    </li>
+
+                    <li>
+
+                        <strong>Location</strong>
+
+                        <span>{{ project.location }}</span>
+
+                    </li>
+
+                    <li>
+
+                        <strong>Category</strong>
+
+                        <span>{{ project.category.name }}</span>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container pb-5 fade-up">
+
+    <h2 class="section-title">
+        Project Gallery
+    </h2>
+
+    <div class="row g-4">
+
+        {% for image in project.gallery.all %}
+
+        <div class="col-lg-6">
+
+            <div class="gallery-card">
+
+                <img src="{{ image.image.url }}">
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p>No gallery images available.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<section class="container text-center py-5">
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+        <a
+            href="{% url 'portfolio' %}"
+            class="btn btn-outline-primary btn-lg px-5 rounded-pill"
+        >
+            <i class="bi bi-grid-3x3-gap-fill me-2"></i>
+
+            Go to Portfolio List
+        </a>
+
+        <a
+            href="{% url 'home' %}"
+            class="btn btn-primary btn-lg px-5 rounded-pill"
+        >
+            <i class="bi bi-house-fill me-2"></i>
+
+            Go to Home
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

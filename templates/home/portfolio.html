@@ -1,0 +1,103 @@
+<section class="portfolio-section py-5">
+
+<div class="container">
+
+<div class="text-center mb-5" data-aos="fade-down">
+
+    <h6 class="text-primary fw-bold">
+        OUR PORTFOLIO
+    </h6>
+
+    <h2 class="section-title">
+        Featured Projects
+    </h2>
+
+    <p class="section-subtitle">
+        Discover our innovative work across Artificial Intelligence,
+        Robotics, IoT, Embedded Systems, Web Development,
+        and Industrial Automation.
+    </p>
+
+</div>
+
+<div class="row g-4">
+
+{% for project in featured_projects %}
+
+<div
+    class="col-lg-4 col-md-6"
+    data-aos="fade-up"
+    data-aos-delay="{{ forloop.counter0 }}00"
+>
+
+<div class="portfolio-card">
+
+<div class="portfolio-image">
+
+<img
+src="{{ project.featured_image.url }}"
+alt="{{ project.title }}"
+>
+
+<span class="portfolio-category">
+
+{{ project.category.name }}
+
+</span>
+
+</div>
+
+<div class="portfolio-content">
+
+<h4>
+
+{{ project.title }}
+
+</h4>
+
+<p>
+
+{{ project.short_description|truncatewords:20 }}
+
+</p>
+
+<div class="tech-stack">
+
+{% for tech in project.technologies.all %}
+
+<span>
+
+<i class="{{ tech.icon }}"></i>
+
+{{ tech.name }}
+
+</span>
+
+{% endfor %}
+
+</div>
+
+<a
+href="{% url 'project_detail' project.slug %}"
+class="portfolio-btn"
+>
+
+View Project
+
+<i class="bi bi-arrow-right"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</section>

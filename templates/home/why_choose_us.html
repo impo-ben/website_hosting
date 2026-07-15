@@ -1,0 +1,54 @@
+<section class="why-section py-5">
+
+    <div class="container">
+
+        <div class="section-title text-center mb-5">
+
+            <h6 class="text-primary">WHY CHOOSE US</h6>
+
+            <h2>Why Companies Choose CompanyHub</h2>
+
+            <p style="font-size: large;">
+                We deliver innovative robotics, automation,
+                AI and IoT solutions with a strong focus on quality.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            {% for item in why_choose_us %}
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+
+                        <i class="{{ item.icon }}"></i>
+
+                    </div>
+
+                    <h4>
+
+                        {{ item.title }}
+
+                    </h4>
+
+                    <p>
+
+                        {{ item.description }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
